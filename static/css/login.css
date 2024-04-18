@@ -1,0 +1,23 @@
+html, body{
+    height: 100%;
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    max-width: 350px;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.438);
+    border-radius: 10px;
+}
+
+
+body {
+    background: linear-gradient(to bottom, #84d2ff, hsl(168, 53%, 58%)); /* Substitua as cores conforme desejado */
+}
+/*gradient The background has a horizontal gradient linear-gradient( to right, #84d2ff, #8d5acd),*/
+.Entrar{
+    color: #0000008d;
+    text-shadow: #000000;
+}
+

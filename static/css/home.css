@@ -1,0 +1,165 @@
+html, body{
+    
+    height: 100vh;
+    
+}
+
+.cabecalho{
+    padding: 2% 5% 5% 15%;
+    position: relative;
+    z-index: 2;
+    
+}
+
+
+.cabecalho__menu__link{
+    
+    font-size:2rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color:#ffee00;
+    text-decoration: none; 
+    
+   
+    z-index: 1;
+    
+}
+
+
+.cabecalho__menu{
+    display: flex;
+    gap: 80px;
+    position: fixed;
+    left: 10vw;
+    top: 2vh;
+
+   
+
+    
+}
+.img__SobrepostaFundo{
+    background-image: url(/static/img/fundoImgSobreposta_Prancheta\ 1.png);
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 90%;
+}
+
+body {
+    width: vh100;
+    position: relative;
+    
+    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    top: 0%;
+    background: linear-gradient(to bottom, #84d2ff, hsl(168, 53%, 58%));
+    
+}
+
+header {
+    
+    width:100vw;
+    margin: 0;
+    color: white;
+    text-align:center;
+    padding: 15vh 0;
+    
+}
+
+.sobre{
+    background-color: azure;
+    padding: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:20em;
+    text-align: center;
+    text-align: justify;
+    color:#333;
+
+    position: fixed;
+    width:50vw;
+    margin:0;
+    left: 10vw;
+    z-index: 1;
+    top: 13vh;
+   
+}
+ 
+
+
+.vetorPessoas{
+   
+  position: fixed;
+  
+   height: 40vh;
+   right: 7vw;
+
+   bottom: 8vh;
+
+
+}
+
+
+p{
+    font-size:20px;
+    text-align: center;
+    text-align: justify;
+    color: #000;
+    border:10vw;
+}
+
+footer {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.rodape__texto{
+   
+    font-size: 18px;
+    color: aqua;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    left: 10vw;
+    
+   
+}
+
+
+
+#loginHome{
+    height: 60vh;
+    width: 23vw;
+    float: right;
+    position: fixed;
+    top: 13vh;
+    right: 15vh;
+    position: absolute;
+    z-index: 4;
+    
+}
+
+.form-container {
+    position: static;
+    z-index: 5;
+    max-width: 20vw;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.438);
+    border-radius: 10px;
+    
+}
+
+
+.Entrar{
+    color: #0000008d;
+    text-shadow: #000000;
+}
+
