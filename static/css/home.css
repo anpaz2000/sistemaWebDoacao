@@ -8,8 +8,8 @@
 }
     
 
-.cabecalho{
-    padding: 2% 5% 5% 15%;
+*.cabecalho{ 
+    padding: 2% 5% 5% 15%; /*tira o efeito dos nomes*/
     position: relative;
     z-index: 2;
     
@@ -17,29 +17,57 @@
 
 
 .cabecalho__menu__link{
-    
     font-size:25px;
-    font-weight: 600;
-    color:#ffee00;
+    font-weight: 90px;
+    color:rgb(244, 248, 244); /*muda a cor dos nomes*/
     text-decoration: none; 
     font-style: bold;
-   
+
     z-index: 1;
+
+
+}
+.class cabecalho{ 
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    }
+
+a{
+        color:rgb(248, 244, 244);
+    }
+
     
+a:hover{
+        color: rgb(132,14,201); /*aqui muda o nome de cor quando passa p mause em cima*/
+        transition: 0.3s all; 
 }
 
 
-.cabecalho__menu{
+#Inscreva-se-button{
+    border: 2px solid rgb(132,14,201); /*aumenta a espessura do quadrado*/
+    padding: 10px;
+    border-radius: 25px;
+    
+    }
+    
+#Inscreva-se-button:hover{
+       background-color: rgb(132,14,201); /* a cor do quadrado*/
+       color:wheat; 
+    
+    }
+
+    
+.cabecalho__menu{  /*bagunça o cabaçalho*/
     display: flex;
     gap: 80px;
     position: fixed;
     left: 10vw;
     top: 2vh;
-
-   
-
     
 }
+
+
 .img__SobrepostaFundo{
     background-image: url(/static/img/fundoImgSobreposta_Prancheta\ 1.png);
     position: absolute;
@@ -51,8 +79,8 @@
     opacity: 90%;
 }
 
-body {
-    background: linear-gradient(to bottom, #84d2ff, hsl(168, 53%, 58%));
+body{
+    background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));
     background-position: center;
     background-size: cover;
     display: flex;
@@ -63,17 +91,22 @@ body {
     
 }
 
-header {
+header,h1 {
     
     width:100vw;
     margin: 0;
-    color: white;
+    color: wheat;
     text-align:center;
     padding: 15vh 0;
+
+    font-size: 50%;
+    line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   color: #f40410;
     
 }
 
-.sobre{
+/*.sobre{
     background-color: azure;
     padding: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -89,7 +122,7 @@ header {
     z-index: 1;
     top: 13vh;
    
-}
+}*/
  
 
 
@@ -97,7 +130,7 @@ header {
    
   position: fixed;
   
-   height: 40vh;
+   height: 70vh;
    right: 7vw;
 
    bottom: 8vh;
