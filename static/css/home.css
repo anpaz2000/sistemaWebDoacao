@@ -19,7 +19,7 @@
 .cabecalho__menu__link{
     font-size:25px;
     font-weight: 90px;
-    color:rgb(244, 248, 244); /*muda a cor dos nomes*/
+    color:rgb(255, 255, 255); /*muda a cor dos nomes*/
     text-decoration: none; 
     font-style: bold;
 
@@ -33,27 +33,27 @@
     padding: 10px;
     }
 
-a{
-        color:rgb(248, 244, 244);
-    }
+/*a{
+        color:rgb(5, 5, 5);
+    }*/
 
     
 a:hover{
-        color: rgb(132,14,201); /*aqui muda o nome de cor quando passa p mause em cima*/
+        color:#400040; /*aqui muda o nome de cor quando passa p mause em cima*/
         transition: 0.3s all; 
 }
 
 
 #Inscreva-se-button{
-    border: 2px solid rgb(132,14,201); /*aumenta a espessura do quadrado*/
+    border: 2px solid #400040; /*aumenta a espessura do quadrado*/
     padding: 10px;
     border-radius: 25px;
     
     }
     
 #Inscreva-se-button:hover{
-       background-color: rgb(132,14,201); /* a cor do quadrado*/
-       color:wheat; 
+       background-color: #400040; /* a cor do quadrado*/
+       color:white; 
     
     }
 
@@ -68,19 +68,9 @@ a:hover{
 }
 
 
-.img__SobrepostaFundo{
-    background-image: url(/static/img/fundoImgSobreposta_Prancheta\ 1.png);
-    position: absolute;
-    background-size: cover;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 90%;
-}
-
 body{
-    background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));
+    /*background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));*/
+    background-image: linear-gradient(0deg, rgba(17, 54, 71), rgba(20, 147, 220));
     background-position: center;
     background-size: cover;
     display: flex;
@@ -88,11 +78,11 @@ body{
     justify-content: center;
     padding: 20px;
     min-height: 100vh;
+    text-align: center;
     
 }
 
-header,h1 {
-    
+header {
     width:100vw;
     margin: 0;
     color: wheat;
@@ -104,8 +94,20 @@ header,h1 {
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
    color: #f40410;
     
-}
+} 
+main{
+    /*text-align: center; */
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
 
+}
+h1{
+    color:aqua;
+    font-size: 50px;
+    line-height: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 /*.sobre{
     background-color: azure;
     padding: 2%;
