@@ -67,7 +67,6 @@ a:hover{
     
 }
 
-
 body{
     /*background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));*/
     background-image: linear-gradient(0deg, rgba(17, 54, 71), rgba(20, 147, 220));
@@ -82,11 +81,11 @@ body{
     
 }
 
-header {
+header, h1 {
     width:100vw;
     margin: 0;
     color: wheat;
-    text-align:center;
+    /*text-align:center;*/
     padding: 15vh 0;
 
     font-size: 50%;
@@ -95,19 +94,7 @@ header {
    color: #f40410;
     
 } 
-main{
-    /*text-align: center; */
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
 
-}
-h1{
-    color:aqua;
-    font-size: 50px;
-    line-height: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
 /*.sobre{
     background-color: azure;
     padding: 2%;
