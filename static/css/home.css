@@ -9,9 +9,10 @@
     
 
 *.cabecalho{ 
-    padding: 2% 5% 5% 15%; /*tira o efeito dos nomes*/
+    padding: 2% 5% 5% 15%;
     position: relative;
     z-index: 2;
+    
     
 }
 
@@ -19,11 +20,12 @@
 .cabecalho__menu__link{
     font-size:25px;
     font-weight: 90px;
-    color:rgb(244, 248, 244); /*muda a cor dos nomes*/
+   color:rgb(241, 244, 241); /*muda a cor dos nomes*/
     text-decoration: none; 
     font-style: bold;
 
     z-index: 1;
+
 
 
 }
@@ -34,7 +36,7 @@
     }
 
 a{
-        color:rgb(248, 244, 244);
+        color:rgb(248, 243, 243);
     }
 
     
@@ -80,7 +82,8 @@ a:hover{
 }
 
 body{
-    background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));
+    /*background: linear-gradient(to bottom, #f40410, hsl(168, 53%, 58%));*/
+    background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
     background-position: center;
     background-size: cover;
     display: flex;
@@ -96,15 +99,20 @@ header,h1 {
     width:100vw;
     margin: 0;
     color: wheat;
-    text-align:center;
+    /*text-align:center;*/
     padding: 15vh 0;
 
     font-size: 50%;
     line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
    color: #f40410;
+
+   
     
 }
+
+
+
 
 /*.sobre{
     background-color: azure;
@@ -139,13 +147,13 @@ header,h1 {
 }
 
 
-p{
+/*p{
     font-size:20px;
     text-align: center;
     text-align: justify;
     color: #000;
     border:10vw;
-}
+}*/
 
 footer {
     background-color: #333;
@@ -158,7 +166,7 @@ footer {
 .rodape__texto{
    
     font-size: 18px;
-    color: aqua;
+    color: rgb(246, 250, 250);
     align-items: center;
     text-align: left;
     position: relative;
@@ -169,7 +177,7 @@ footer {
 
 
 
-#loginHome{
+/*#loginHome{
     height: 60vh;
     width: 23vw;
     float: right;
@@ -195,5 +203,5 @@ footer {
 .Entrar{
     color: #0000008d;
     text-shadow: #000000;
-}
+}*/
 
