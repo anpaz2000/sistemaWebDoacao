@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Remédio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <form
+      action=""
+      method="POST"
+      data-form
+    >
+      <label for="nome">Nome do remédio </label>
+      <input type="text" name="nome" id="nome" required />
+
+      <label for="Dosagem do remédio">Dosagem do remédio</label>
+      <input type="text" name="Dosagem do remédio" id="Dosagem do remédio" required />
+
+      <label for="Quantidade">Quantidade</label>
+      <input type="number" name="quantidade" id="quantidade" required />
+
+      <label for="">Validade</label>
+      <input type="date" name="Validade" id="Validade" required />
+
+      <button type="button" onclick="alert('Enviado com sucesso!')">Enviar</button>
+      <!--<button type="submit" data-button>Enviar</button>-->
+    </form>
+  </body>
+</html>
