@@ -83,7 +83,7 @@ body{
     
 }
 
-header, h1 {
+header,h1{
     width:100vw;
     margin: 0;
     color: wheat;
@@ -97,7 +97,10 @@ header, h1 {
 
    
     
-} 
+}
+.titulo-home{
+    color:#f40410;
+}
 
 
 
