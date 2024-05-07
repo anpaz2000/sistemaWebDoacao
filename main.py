@@ -1,6 +1,11 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, send_from_directory
 app = Flask(__name__)
+
+# Adiciona o icone nas páginas
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('./static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route("/")
 def hello_world():
