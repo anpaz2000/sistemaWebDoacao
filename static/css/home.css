@@ -50,10 +50,10 @@ a:hover{
        background-color: #400040; a cor do quadrado
        color:white; 
     
-    }
+    }*/
 
     
-.cabecalho__menu{  /*bagunça o cabaçalho*/
+.cabecalho__menu{  
     display: flex;
     gap: 80px;
     position: fixed;
