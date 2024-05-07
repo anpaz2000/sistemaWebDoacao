@@ -1,0 +1,57 @@
+/*.sobre{
+    background-color: rgb(43, 61, 61);
+    padding: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:20em;
+    text-align: center;
+    text-align: justify;
+    color:#000000;
+
+    position: fixed;
+    width:50vw;
+    margin:0;
+    left: 10vw;
+    z-index: 1;
+    top: 13vh;
+ 
+}*/
+h1{
+    text-align: center;
+    width:100vw;
+    margin: 0;
+    color: wheat;
+    /*text-align:center;*/
+    padding: 15vh 0;
+
+    font-size: 50px;
+    line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   color: #f40410;
+}
+body {
+  
+    background: linear-gradient(to bottom, #84d2ff, hsl(168, 53%, 58%));
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+p{
+
+    font-size:30px;
+    text-align: center;
+    text-align: justify;
+    color: #000;
+    border:10vw;
+    position: fixed;
+    width:50vw;
+    margin:0;
+    left: 10vw;
+    z-index: 1;
+    top: 13vh;
+
+}
