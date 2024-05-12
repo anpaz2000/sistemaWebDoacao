@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, send_from_directory, request, redirect, url_for
+from flask import render_template, send_from_directory, request, redirect, url_for, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -80,25 +80,20 @@ def submit_remedio():
    # redireciona para página sucesso.html
     return redirect(url_for('consulta_de_medicamentos'))
 
+
+@app.route('/lista_remedio', methods=['GET'])
 def consulta_remedio():
     conn = sqlite3.connect('remedio.db')
     cursor = conn.cursor()
-    nome_remedio = request.form['remedio']
     
     # Consultar os dados
-    cursor.execute(("SELECT * FROM remedios WHERE nome LIKE ?", ('%' + nome_remedio + '%',)))
+    cursor.execute(("SELECT * FROM remedio"))
     dados = cursor.fetchall()
-# Gerar o HTML para preencher a tabela
-    tabela_html = ""
-    for remedio in dados:
-        tabela_html += "<tr>"
-        for item in remedio:
-            tabela_html += "<td>" + str(item) + "</td>"
-        tabela_html += "</tr>"
-
-    # Fechar conexão com o banco de dados
+    
     conn.close()
-    return tabela_html
+    
+    return jsonify(dados)
+    
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=105, debug=True)
