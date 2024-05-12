@@ -1,0 +1,57 @@
+<<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Remédios</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+}
+  </style>
+</head>
+<body>
+  <h2>Tabela de Remédios</h2>
+  <input type="text" id="inputRemedio" placeholder="Digite o nome do remédio">
+  <button onclick="buscarRemedio()">Buscar</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Remédio</th>
+        <th>Quantidade</th>
+        <th>Dosagem</th>
+        <th>Validade</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-corpo">
+      <!-- Os dados da tabela serão inseridos aqui -->
+    </tbody>
+  </table>
+<script>
+    function buscarRemedio() {
+      var inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
+      var tabela = document.getElementById("tabela-corpo");
+      var linhas = tabela.getElementsByTagName("tr");
+// Iterar sobre todas as linhas da tabela
+      for (var i = 0; i < linhas.length; i++) {
+        var colunaNome = linhas[i].getElementsByTagName("td")[0];
+        if (colunaNome) {
+          var textoNome = colunaNome.textContent || colunaNome.innerText;
+          if (textoNome.toUpperCase().indexOf(inputRemedio) > -1) {
+            linhas[i].style.display = "";
+          } else {
+            linhas[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+  
