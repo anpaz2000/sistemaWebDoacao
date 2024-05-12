@@ -1,5 +1,7 @@
 from flask import Flask
-from flask import render_template, send_from_directory
+from flask import render_template, send_from_directory, request, redirect, url_for
+import sqlite3
+
 app = Flask(__name__)
 
 # Adiciona o icone nas páginas
@@ -22,7 +24,7 @@ def cadastrar_medicamentos():
 
 @app.route("/consulta")
 def consulta_de_medicamentos():
-    return render_template("consulta_medicamento.html")
+    return render_template("home.html")
 
 @app.route("/sobre")
 def sobre():
@@ -31,6 +33,52 @@ def sobre():
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    nome = request.form['nome']
+    email = request.form['email']
+    telefone = request.form['telefone']
+    senha = request.form['senha']
+
+    # conecta com SQLite.
+    conn = sqlite3.connect('usuario.db')
+    cursor = conn.cursor()
+
+    # Inserir dados na tabela SQLite.
+    cursor.execute('''INSERT INTO usuario (nome, email, telefone, senha)
+                      VALUES (?, ?, ?, ?)''', (nome, email, telefone, senha))
+
+# Commit e fechar conexão
+    conn.commit()
+    conn.close()
+
+   # redireciona para página sucesso.html
+    return redirect(url_for('login'))
+
+ # submit dos remedios
+
+@app.route('/submit_remedio', methods=['POST'])
+def submit_remedio():
+    nome = request.form['nome']
+    quantidade = request.form['quantidade']
+    dosagem = request.form['Dosagem do remédio']
+    validade = request.form['Validade']
+
+    # conecta com SQLite.
+    conn = sqlite3.connect('remedio.db')
+    cursor = conn.cursor()
+  
+    # Inserir dados na tabela SQLite.
+    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade)
+                      VALUES (?, ?, ?, ?)''', (nome, quantidade, dosagem, validade))
+
+# Commit e fechar conexão
+    conn.commit()
+    conn.close()
+
+   # redireciona para página sucesso.html
+    return redirect(url_for('consulta_de_medicamentos'))
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=105, debug=True)
