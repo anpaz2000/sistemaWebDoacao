@@ -10,24 +10,27 @@
 </head>
 <body class="d-flex align-items-center py-4">
     <main class="w-100 m-auto form-container">
-        <form>
-           
+        <form
+          action="submit_login"
+          method="POST"
+          data-form
+        >
             <h1 class="titulo-login">Entrar</h1>
             <div class="form-floating py-1">
 
-              <input type="email" class="form-control" id="floatingInput" placeholder="Seu email">
-                <label for="floatingInput">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Seu email" name="email">
+                <label for="email">Email</label>
             </div>
             <div class="form-floating">
-                <input type="Senha" class="form-control" id="floatingInput" placeholder="Senha">
-                <label for="floatingInput">Senha</label>
+                <input type="Senha" class="form-control" id="senha" placeholder="Senha" name="senha">
+                <label for="senha">Senha</label>
             </div>
             <div class="form-check text-start my-3">
                 <input type="checkbox" class="form-check-input" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">Lembre-me</label>
 
             </div>
-            <button class="btn btn-primary w-100 py-2">Cadastre-se</button>
+            <button class="btn btn-primary w-100 py-2">Entrar</button>
             <div class="retangulo">
 
             </div>
