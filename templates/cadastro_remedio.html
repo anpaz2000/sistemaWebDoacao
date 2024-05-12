@@ -10,24 +10,32 @@
   </head>
   <body>
     <form
-      action=""
+      action="submit_remedio"
       method="POST"
       data-form
     >
+    <div class="input-group">
       <label for="nome">Nome do remédio </label>
       <input type="text" name="nome" id="nome" required />
+    </div>
 
+    <div class="input-group">
       <label for="Dosagem do remédio">Dosagem do remédio</label>
       <input type="text" name="Dosagem do remédio" id="Dosagem do remédio" required />
-
+    </div>
+    <div class="input-group">
       <label for="Quantidade">Quantidade</label>
       <input type="number" name="quantidade" id="quantidade" required />
-
-      <label for="">Validade</label>
+    </div>
+    
+    <div class="input-group">
+      <label for="Validade">Validade</label>
       <input type="date" name="Validade" id="Validade" required />
-
-      <button type="button" onclick="alert('Enviado com sucesso!')">Enviar</button>
-      <!--<button type="submit" data-button>Enviar</button>-->
+    </div>
+    <div class="input-group">
+      <input type="submit" value="Cadastrar Remédio">
+     
+    </div>
     </form>
   </body>
 </html>

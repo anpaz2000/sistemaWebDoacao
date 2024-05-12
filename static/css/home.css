@@ -63,12 +63,7 @@ a:hover{
 }
 
 body{
-<<<<<<< HEAD
-  
-   background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
-=======
     background-image: linear-gradient(0deg, rgba(17, 54, 71), rgba(20, 147, 220));
->>>>>>> 7ba63e05366d4390d917715a08adcc1a6f98d7fe
     background-position: center;
     background-size: cover;
     display: flex;
