@@ -76,7 +76,7 @@ body{
 }
 
 header,h1{
-    width:100vw;
+    width:100%;
     margin: 0;
     color: wheat;
     /*text-align:center;*/
@@ -91,9 +91,15 @@ header,h1{
     
 }
 .titulo-home{
+    position: relative;
+    right: 10px;
     color:#f40410;
 }
 
+.subtitulo{
+    position: relative;
+    font-size:30px;
+}
 
 .vetorPessoas{
    
