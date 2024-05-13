@@ -16,19 +16,33 @@ async function buscaRemedio(){
 
 
 function buscarRemedio() {
-    var inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
-    var tabela = document.getElementById("tabela-corpo");
-    var linhas = tabela.getElementsByTagName("tr");
-// Iterar sobre todas as linhas da tabela
-    for (var i = 0; i < linhas.length; i++) {
-      var colunaNome = linhas[i].getElementsByTagName("td")[0];
-      if (colunaNome) {
-        var textoNome = colunaNome.textContent || colunaNome.innerText;
-        if (textoNome.toUpperCase().indexOf(inputRemedio) > -1) {
-          linhas[i].style.display = "";
-        } else {
-          linhas[i].style.display = "none";
-        }
-      }
-    }
-  }
+  fetch("http://localhost:105/lista_remedio",{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const tabelaCorpo = document.getElementById("tabela-corpo");
+      tabelaCorpo.innerHTML = "";
+      data.forEach((remedio)=>{
+
+        const tr = document.createElement("tr");
+        const tdNome = document.createElement("td");
+        tdNome.textContent = remedio[0];
+        const tdQuantidade = document.createElement("td");
+        tdQuantidade.textContent = remedio[1];
+        const tdDosagem = document.createElement("td");
+        tdDosagem.textContent = remedio[2];
+        const tdValidade = document.createElement("td");
+        tdValidade.textContent = remedio[3];
+        tr.appendChild(tdNome);
+        tr.appendChild(tdQuantidade);
+        tr.appendChild(tdDosagem);
+        tr.appendChild(tdValidade);
+        tabelaCorpo.appendChild(tr);
+      })
+
+  })
+}

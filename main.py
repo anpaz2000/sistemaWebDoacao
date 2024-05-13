@@ -1,14 +1,14 @@
 from flask import Flask
-from flask import render_template, send_from_directory, request, redirect, url_for, jsonify
+from flask import render_template, send_from_directory, request, redirect, url_for, jsonify, session
 import sqlite3
 import json
 
 app = Flask(__name__)
 
-app.config['BASIC_AUTH_USERNAME'] = 'john'
-app.config['BASIC_AUTH_PASSWORD'] = 'matrix'
+# app.config['BASIC_AUTH_USERNAME'] = 'john'
+# app.config['BASIC_AUTH_PASSWORD'] = 'matrix'
 
-auth = BasicAuth()
+# auth = BasicAuth()
 
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
@@ -45,7 +45,6 @@ def login():
     return render_template("login.html")
 
 @app.route("/buscaRemedioBase", methods=["POST"])
-@auth.required
 def consulta_banco_remedios():
     json_request = request.json
     print(json_request, json_request["nome_remedio"])
@@ -53,7 +52,7 @@ def consulta_banco_remedios():
     conn = sqlite3.connect('remedio.db')
     cursor = conn.cursor()    
     # Consultar os dados
-    cursor.execute(("SELECT * FROM remedios WHERE nome LIKE ?", ('%' + nome_remedio + '%',)))
+    cursor.execute(f"SELECT * FROM remedio WHERE nome='{nome_remedio}'")
     dados = cursor.fetchall()
     json_retorno = json.dumps(dados)
     return json_retorno
@@ -143,5 +142,5 @@ def submit_login():
         return redirect(url_for('login'))
         
 if __name__=="__main__":
-    # app.secret_key = 'chave_acesso'
+    app.secret_key = 'chave_acesso'
     app.run(host="0.0.0.0",port=9000, debug=True)
