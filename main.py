@@ -20,10 +20,14 @@ def cadastro():
 
 @app.route("/cadastro_remedio")
 def cadastrar_medicamentos():
+    if 'nome_usuario' not in session:
+        return redirect(url_for('cadastro'))
     return render_template("cadastro_remedio.html")
 
 @app.route("/consulta")
 def consulta_de_medicamentos():
+    if 'nome_usuario' not in session:
+        return redirect(url_for('cadastro'))
     return render_template("consulta_medicamento.html")
 
 @app.route("/sobre")
@@ -95,7 +99,29 @@ def consulta_remedio():
     return jsonify(dados)
     
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",port=105, debug=True)
+@app.route("/submit_login", methods=['POST'])
+def submit_login():
+    email = request.form['email']
+    senha = request.form['senha']
 
-    
+    # Conecta com SQLite
+    conn = sqlite3.connect('usuario.db')
+    cursor = conn.cursor()
+
+    # Consulta os dados
+    cursor.execute("SELECT * FROM usuario WHERE email = ? AND senha = ?", (email, senha))
+    dados = cursor.fetchall()
+
+    # Fecha conexão com o banco de dados
+    conn.close()
+
+    if len(dados) > 0:
+        session['nome_usuario'] = email
+        session['secret_key'] = 'chave_acesso'
+        return redirect(url_for('consulta_de_medicamentos'))
+    else:
+        return redirect(url_for('login'))
+        
+if __name__=="__main__":
+    app.secret_key = 'chave_acesso'
+    app.run(host="0.0.0.0",port=9000, debug=True)
