@@ -84,26 +84,42 @@ header,h1{
 
     font-size: 50%;
     line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   color: #f40410;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #f40410;
 
    
     
 }
+
+.divisao-titulo{
+    margin: 0px;
+    height: 2vi;
+    width: 60vh;
+    left: 2vh;
+    top: 170px;
+    position: absolute;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
 .titulo-home{
-    position: relative;
-    right: 10px;
+    /* position: absolute; */
+    /* left: 10px; */
     color:#f40410;
+    font-size: 4vi;
+    /* text-align: left; */
 }
 
 .subtitulo{
-    position: relative;
-    font-size:30px;
+    /* position: absolute; */
+    font-size: 2vi;
+    /* text-align: right; */
+    /* left: 10px; */
 }
 
 .vetorPessoas{
    
-  position: fixed;
+  /* position: fixed; */
   
    height: 70vh;
    right: 7vw;
