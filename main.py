@@ -5,11 +5,6 @@ import json
 
 app = Flask(__name__)
 
-# app.config['BASIC_AUTH_USERNAME'] = 'john'
-# app.config['BASIC_AUTH_PASSWORD'] = 'matrix'
-
-# auth = BasicAuth()
-
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
 def favicon():
@@ -44,9 +39,10 @@ def sobre():
 def login():
     return render_template("login.html")
 
-@app.route("/buscaRemedioBase", methods=["POST"])
-def consulta_banco_remedios():
+@app.route("/busca_remedio_base", methods=["POST"])
+def busca_remedio_base():
     json_request = request.json
+<<<<<<< HEAD
     print(json_request, json_request["nome_remedio"])
     nome_remedio = json_request["nome_remedio"]
     conn = sqlite3.connect('remedio.db')
@@ -56,6 +52,16 @@ def consulta_banco_remedios():
     dados = cursor.fetchall()
     json_retorno = json.dumps(dados)
     return json_retorno
+=======
+    nome_remedio =  [ json_request["nome_remedio"] ]
+
+    with sqlite3.connect('remedio.db') as conn:
+        cursor = conn.cursor()    
+        # Consultar os dados
+        cursor.execute(f"SELECT * FROM remedio WHERE nome=?", (nome_remedio))
+        dados = cursor.fetchall()
+    return jsonify(dados)
+>>>>>>> add8272b1ace6fd8ed0965ff0f13043e2acc62ff
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -83,7 +89,7 @@ def submit():
 
 @app.route('/submit_remedio', methods=['POST'])
 def submit_remedio():
-    nome = request.form['nome']
+    nome = request.form['nome'].upper()
     quantidade = request.form['quantidade']
     dosagem = request.form['Dosagem do remédio']
     validade = request.form['Validade']
@@ -96,27 +102,12 @@ def submit_remedio():
     cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade)
                       VALUES (?, ?, ?, ?)''', (nome, quantidade, dosagem, validade))
 
-# Commit e fechar conexão
+    # Commit e fechar conexão
     conn.commit()
     conn.close()
 
    # redireciona para página sucesso.html
     return redirect(url_for('consulta_de_medicamentos'))
-
-
-@app.route('/lista_remedio', methods=['GET'])
-def consulta_remedio():
-    conn = sqlite3.connect('remedio.db')
-    cursor = conn.cursor()
-    
-    # Consultar os dados
-    cursor.execute(("SELECT * FROM remedio"))
-    dados = cursor.fetchall()
-    
-    conn.close()
-    
-    return jsonify(dados)
-    
 
 @app.route("/submit_login", methods=['POST'])
 def submit_login():
