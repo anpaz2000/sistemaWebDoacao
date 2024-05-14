@@ -96,3 +96,36 @@ button:disabled {
 .error {
   color: tomato;
 }
+
+
+ /* cor do cabecalho ex:sobre ,consulta*/
+h2{
+  color:rgb(16, 17, 16);
+  margin: 20px;
+}
+
+
+.cabecalho__menu__link{
+  font-size:25px;
+  font-weight: 90px;
+  color:rgb(255, 255, 255); /*muda a cor dos nomes*/
+  text-decoration: none; 
+  font-style: bold;
+
+  z-index: 1;
+
+
+  margin: 20px;
+  padding: 10px;
+
+}
+.class cabecalho{ 
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+  }
+
+a:hover{
+      color:#400040; /*aqui muda o nome de cor quando passa p mause em cima*/
+      transition: 0.3s all; 
+}
