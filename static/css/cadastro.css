@@ -33,7 +33,7 @@ width: 930px;
 
 .img-box{  /* mexe com a aparte do formulario ex:já é membro*/
     background-color: rgba(255, 255, 255, 0.2);
-  /* background-color: rgba(29, 6, 161, 0.969); /* muda a cor do fundo da imagem*/
+   /*background-color: rgba(29, 6, 161, 0.969); /* muda a cor do fundo da imagem*/
     width: 50%;
     display: flex;
     align-items: center;
