@@ -20,7 +20,13 @@
       </tr>
     </thead>
     <tbody id="tabela-corpo">
-      <!-- Os dados da tabela serão inseridos aqui -->
+      {% for remedio in remedios() %}
+        <tr>
+          <td>{{ remedio.nome }}</td>
+          <td>{{ remedio.dosagem }}</td>
+          <td>{{ remedio.validade }}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
   <script src="./static/script/funcoes.js"></script>
