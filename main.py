@@ -52,7 +52,7 @@ def consulta_banco_remedios():
     conn = sqlite3.connect('remedio.db')
     cursor = conn.cursor()    
     # Consultar os dados
-    cursor.execute(f"SELECT * FROM remedio WHERE nome='{nome_remedio}'")
+    cursor.execute(f"SELECT * FROM remedio WHERE upper(nome) like '{nome_remedio}'")
     dados = cursor.fetchall()
     json_retorno = json.dumps(dados)
     return json_retorno
