@@ -1,5 +1,6 @@
+// Recriei esse função usando await pois um erro estava acontecendo nas =>
 async function buscaRemedio(){
-    var inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
+    let inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
     opcoes = {
       method: "POST",
       mode: "cors", // no-cors, *cors, same-origin
@@ -9,18 +10,40 @@ async function buscaRemedio(){
       },
       body: JSON.stringify({"nome_remedio": inputRemedio}), // body data type must match "Content-Type" header
     }
-    let resposta = await fetch("http://127.0.0.1:9000/buscaRemedioBase", opcoes);
+    let resposta = await fetch("http://127.0.0.1:9000/busca_remedio_base", opcoes);
     let objetoResposta = await resposta.json();
-    console.log(objetoResposta)
+    const tabelaCorpo = document.getElementById("tabela-corpo");
+      tabelaCorpo.innerHTML = "";
+      objetoResposta.forEach((remedio)=>{
+
+        const tr = document.createElement("tr");
+        const tdNome = document.createElement("td");
+        tdNome.textContent = remedio[1];
+        const tdQuantidade = document.createElement("td");
+        tdQuantidade.textContent = remedio[2];
+        const tdDosagem = document.createElement("td");
+        tdDosagem.textContent = remedio[3];
+        const tdValidade = document.createElement("td");
+        tdValidade.textContent = remedio[4];
+        tr.appendChild(tdNome);
+        tr.appendChild(tdQuantidade);
+        tr.appendChild(tdDosagem);
+        tr.appendChild(tdValidade);
+        tabelaCorpo.appendChild(tr);
+      })
 }
 
 
 function buscarRemedio() {
-  fetch("http://localhost:105/lista_remedio",{
-    method: 'GET',
+  let inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
+  fetch("http://127.0.0.1:9000/busca_remedio_base",{
+    method: "POST",
+    mode: "no-cors", // no-cors, *cors, same-origin
+    credentials: "same-origin", // include, *same-origin, omit
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
+    body: JSON.stringify({"nome_remedio": inputRemedio}), // body data type must match "Content-Type" header
   })
     .then((response) => response.json())
     .then((data) => {
