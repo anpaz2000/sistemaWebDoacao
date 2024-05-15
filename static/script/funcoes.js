@@ -25,10 +25,16 @@ async function buscaRemedio(){
         tdDosagem.textContent = remedio[3];
         const tdValidade = document.createElement("td");
         tdValidade.textContent = remedio[4];
+        const tdDescricao = document.createElement("td");
+        tdDescricao.textContent = remedio[5];
+        const tdDoador = document.createElement("td");
+        tdDoador.textContent = remedio[6];
         tr.appendChild(tdNome);
         tr.appendChild(tdQuantidade);
         tr.appendChild(tdDosagem);
         tr.appendChild(tdValidade);
+        tr.appendChild(tdDescricao);
+        tr.appendChild(tdDoador);
         tabelaCorpo.appendChild(tr);
       })
 }
