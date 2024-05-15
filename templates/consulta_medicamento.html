@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tabela de Remédios</title>
-  <link rel="stylesheet" href="/static/css/cadastro_remedio.css">
+  <link rel="stylesheet" href="/static/css/consulta_medicamento.css">
+  <link rel="stylesheet" href="/static/css/componentes/cabecalho.css">
 </head>
 <body>
 
@@ -20,13 +21,14 @@
     </nav>
  </header>
 
+ <div class="conteudo_formulario">
   <h2>Tabela de Remédios</h2>
   <input type="text" id="inputRemedio" placeholder="Digite o nome do remédio">
-  <button onclick="buscaRemedio()">Buscar</button>
+  <button id="buttonRemedio" onclick="buscaRemedio()">Buscar</button>
   <table>
     <thead>
       <tr>
-        <th>Nome do Remédio</th>
+        <th class="lado_esquerdo">Nome do Remédio</th>
         <th>Quantidade</th>
         <th>Dosagem</th>
         <th>Validade</th>
@@ -36,6 +38,8 @@
       <!-- Os dados da tabela serão inseridos aqui -->
     </tbody>
   </table>
+ </div>
+
   <script src="./static/script/funcoes.js"></script>
 </body>
 </html>
