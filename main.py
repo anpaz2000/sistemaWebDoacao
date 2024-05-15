@@ -1,9 +1,11 @@
 from flask import Flask
 from flask import render_template, send_from_directory, request, redirect, url_for, jsonify, session
+from flask_cors import CORS
 import sqlite3
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
@@ -81,14 +83,16 @@ def submit_remedio():
     quantidade = request.form['quantidade']
     dosagem = request.form['Dosagem do remédio']
     validade = request.form['Validade']
+    descricao = request.form['Descricao']
+    doador = session['nome']
 
     # conecta com SQLite.
     conn = sqlite3.connect('remedio.db')
     cursor = conn.cursor()
   
     # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade)
-                      VALUES (?, ?, ?, ?)''', (nome, quantidade, dosagem, validade))
+    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade, doador, descricao)
+                      VALUES (?, ?, ?, ?, ?, ?)''', (nome, quantidade, dosagem, validade, doador, descricao))
 
     # Commit e fechar conexão
     conn.commit()
@@ -114,7 +118,8 @@ def submit_login():
     conn.close()
 
     if len(dados) > 0:
-        session['nome_usuario'] = email
+        session['nome'] = dados[0][1]
+        session['email'] = email
         session['secret_key'] = 'chave_acesso'
         return redirect(url_for('consulta_de_medicamentos'))
     else:
