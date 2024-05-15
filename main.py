@@ -42,26 +42,14 @@ def login():
 @app.route("/busca_remedio_base", methods=["POST"])
 def busca_remedio_base():
     json_request = request.json
-<<<<<<< HEAD
     print(json_request, json_request["nome_remedio"])
     nome_remedio = json_request["nome_remedio"]
     conn = sqlite3.connect('remedio.db')
     cursor = conn.cursor()    
     # Consultar os dados
-    cursor.execute(f"SELECT * FROM remedio WHERE upper(nome) like '{nome_remedio}'")
+    cursor.execute(f"SELECT * FROM remedio WHERE upper(nome) like '%{nome_remedio}%'")
     dados = cursor.fetchall()
-    json_retorno = json.dumps(dados)
-    return json_retorno
-=======
-    nome_remedio =  [ json_request["nome_remedio"] ]
-
-    with sqlite3.connect('remedio.db') as conn:
-        cursor = conn.cursor()    
-        # Consultar os dados
-        cursor.execute(f"SELECT * FROM remedio WHERE nome=?", (nome_remedio))
-        dados = cursor.fetchall()
     return jsonify(dados)
->>>>>>> add8272b1ace6fd8ed0965ff0f13043e2acc62ff
 
 @app.route('/submit', methods=['POST'])
 def submit():

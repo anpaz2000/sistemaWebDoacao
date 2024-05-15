@@ -12,11 +12,14 @@ body {
     background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
     background-position: center;
     background-size: cover;
+    min-height: 100vh;
+}
+
+.conteudo-cadastro{
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 100vh;
 }
 
 .w50{

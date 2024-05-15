@@ -7,60 +7,14 @@
     font-family: "Poppins", sans-serif;
 }
     
-
-*.cabecalho{ 
+/* 
+* .cabecalho{ 
     padding: 2% 5% 5% 15%;
     position: relative;
     z-index: 2;
     
     
-}
-
-
-.cabecalho__menu__link{
-    font-size:25px;
-    font-weight: 90px;
-    color:rgb(255, 255, 255); /*muda a cor dos nomes*/
-    text-decoration: none; 
-    font-style: bold;
-
-    z-index: 1;
-
-}
-.class cabecalho{ 
-    display: inline-block;
-    margin: 20px;
-    padding: 10px;
-    }
-
-a:hover{
-        color:#400040; /*aqui muda o nome de cor quando passa p mause em cima*/
-        transition: 0.3s all; 
-}
-
-
-/*#Inscreva-se-button{
-    border: 2px solid #400040; /*aumenta a espessura do quadrado
-    padding: 10px;
-    border-radius: 25px;
-    
-    }/*
-    
-#Inscreva-se-button:hover{
-       background-color: #400040; a cor do quadrado
-       color:white; 
-    
-    }*/
-
-    
-.cabecalho__menu{  
-    display: flex;
-    gap: 80px;
-    position: fixed;
-    left: 10vw;
-    top: 2vh;
-    
-}
+} */
 
 body{
     background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
