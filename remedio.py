@@ -19,6 +19,19 @@ CREATE TABLE IF NOT EXISTS remedio (
 # Executar o comando SQL
 cursor.execute(comando_sql)
 
+adiciona_coluna_descricao = """
+ALTER TABLE remedio
+ADD COLUMN descricao TEXT
+"""
+cursor.execute(adiciona_coluna_descricao)
+
+adiciona_coluna_doador = """
+ALTER TABLE remedio
+ADD COLUMN doador TEXT
+"""
+
+cursor.execute(adiciona_coluna_doador)
+
 # fechar a conexão
 conexao.commit()
 conexao.close()
