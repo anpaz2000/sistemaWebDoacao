@@ -1,6 +1,15 @@
+// Evento para buscar remedio apertando enter
+let elemento_busca = document.getElementById("inputRemedio")
+elemento_busca.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault()
+    buscaRemedio()
+  }
+}); 
+
 // Recriei esse função usando await pois um erro estava acontecendo nas =>
 async function buscaRemedio(){
-    let inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
+    let inputRemedio = document.getElementById("inputRemedio").value;
     opcoes = {
       method: "POST",
       mode: "cors", // no-cors, *cors, same-origin
@@ -10,7 +19,7 @@ async function buscaRemedio(){
       },
       body: JSON.stringify({"nome_remedio": inputRemedio}), // body data type must match "Content-Type" header
     }
-    let resposta = await fetch("http://127.0.0.1:9000/busca_remedio_base", opcoes);
+    let resposta = await fetch("http://127.0.0.1:1000/busca_remedio_base", opcoes);
     let objetoResposta = await resposta.json();
     const tabelaCorpo = document.getElementById("tabela-corpo");
       tabelaCorpo.innerHTML = "";
@@ -42,7 +51,7 @@ async function buscaRemedio(){
 
 function buscarRemedio() {
   let inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
-  fetch("http://127.0.0.1:9000/busca_remedio_base",{
+  fetch("http://127.0.0.1:1000/busca_remedio_base",{
     method: "POST",
     mode: "no-cors", // no-cors, *cors, same-origin
     credentials: "same-origin", // include, *same-origin, omit
