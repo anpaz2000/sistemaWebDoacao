@@ -46,10 +46,15 @@ def busca_remedio_base():
     json_request = request.json
     print(json_request, json_request["nome_remedio"])
     nome_remedio = json_request["nome_remedio"]
-    conn = sqlite3.connect('remedio.db')
+    conn = sqlite3.connect('banco_de_dados.db')
     cursor = conn.cursor()    
     # Consultar os dados
-    cursor.execute(f"SELECT * FROM remedio WHERE upper(nome) like '%{nome_remedio}%'")
+    cursor.execute(f"""
+        SELECT remedio.*, usuario.nome as nome_usuario, usuario.telefone, usuario.email 
+        FROM remedio 
+        JOIN usuario ON remedio.id_usuario = usuario.id
+        WHERE upper(remedio.nome) like '%{nome_remedio}%'
+    """)
     dados = cursor.fetchall()
     return jsonify(dados)
 
@@ -61,7 +66,7 @@ def submit():
     senha = request.form['senha']
 
     # conecta com SQLite.
-    conn = sqlite3.connect('usuario.db')
+    conn = sqlite3.connect('banco_de_dados.db')
     cursor = conn.cursor()
 
     # Inserir dados na tabela SQLite.
@@ -83,16 +88,15 @@ def submit_remedio():
     quantidade = request.form['quantidade']
     dosagem = request.form['Dosagem do remédio']
     validade = request.form['Validade']
-    descricao = request.form['Descricao']
-    doador = session['nome']
+    id_usuario = session['id_usuario']
 
     # conecta com SQLite.
-    conn = sqlite3.connect('remedio.db')
+    conn = sqlite3.connect('banco_de_dados.db')
     cursor = conn.cursor()
   
     # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade, doador, descricao)
-                      VALUES (?, ?, ?, ?, ?, ?)''', (nome, quantidade, dosagem, validade, doador, descricao))
+    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade, id_usuario)
+                      VALUES (?, ?, ?, ?, ?)''', (nome, quantidade, dosagem, validade, id_usuario))
 
     # Commit e fechar conexão
     conn.commit()
@@ -107,7 +111,7 @@ def submit_login():
     senha = request.form['senha']
 
     # Conecta com SQLite
-    conn = sqlite3.connect('usuario.db')
+    conn = sqlite3.connect('banco_de_dados.db')
     cursor = conn.cursor()
 
     # Consulta os dados
@@ -120,10 +124,11 @@ def submit_login():
     if len(dados) > 0:
         session['nome'] = dados[0][1]
         session['email'] = email
+        session['id_usuario'] = dados[0][0]
         session['secret_key'] = 'chave_acesso'
         return redirect(url_for('consulta_de_medicamentos'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('cadastro'))
         
 if __name__=="__main__":
     app.secret_key = 'chave_acesso'

@@ -19,11 +19,14 @@ async function buscaRemedio(){
       },
       body: JSON.stringify({"nome_remedio": inputRemedio}), // body data type must match "Content-Type" header
     }
-    let resposta = await fetch("http://127.0.0.1:1000/busca_remedio_base", opcoes);
+    let resposta = await fetch("http://127.0.0.1:9000/busca_remedio_base", opcoes);
     let objetoResposta = await resposta.json();
     const tabelaCorpo = document.getElementById("tabela-corpo");
       tabelaCorpo.innerHTML = "";
       objetoResposta.forEach((remedio)=>{
+
+        console.log("@@@@")
+        console.log(remedio)
 
         const tr = document.createElement("tr");
         const tdNome = document.createElement("td");
@@ -34,16 +37,16 @@ async function buscaRemedio(){
         tdDosagem.textContent = remedio[3];
         const tdValidade = document.createElement("td");
         tdValidade.textContent = remedio[4];
-        const tdDescricao = document.createElement("td");
-        tdDescricao.textContent = remedio[5];
         const tdDoador = document.createElement("td");
         tdDoador.textContent = remedio[6];
+        const tdContato = document.createElement("td");
+        tdContato.textContent = remedio[7];
         tr.appendChild(tdNome);
         tr.appendChild(tdQuantidade);
         tr.appendChild(tdDosagem);
         tr.appendChild(tdValidade);
-        tr.appendChild(tdDescricao);
         tr.appendChild(tdDoador);
+        tr.appendChild(tdContato);
         tabelaCorpo.appendChild(tr);
       })
 }
@@ -51,7 +54,7 @@ async function buscaRemedio(){
 
 function buscarRemedio() {
   let inputRemedio = document.getElementById("inputRemedio").value.toUpperCase();
-  fetch("http://127.0.0.1:1000/busca_remedio_base",{
+  fetch("http://127.0.0.1:9000/busca_remedio_base",{
     method: "POST",
     mode: "no-cors", // no-cors, *cors, same-origin
     credentials: "same-origin", // include, *same-origin, omit
