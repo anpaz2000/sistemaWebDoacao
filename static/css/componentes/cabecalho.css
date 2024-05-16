@@ -13,9 +13,10 @@
 
 }
 
-.cabecalho{ 
-  margin: 20px;
+.cabecalho {
+  margin: auto;
   padding: 10px;
+  max-width: 100%;
 }
 
 .cabecalho__menu {
