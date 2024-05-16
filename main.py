@@ -1,9 +1,11 @@
 from flask import Flask
 from flask import render_template, send_from_directory, request, redirect, url_for, jsonify, session
+from flask_cors import CORS
 import sqlite3
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
@@ -125,4 +127,4 @@ def submit_login():
         
 if __name__=="__main__":
     app.secret_key = 'chave_acesso'
-    app.run(host="0.0.0.0",port=9000, debug=True)
+    app.run(host="0.0.0.0",port=1000, debug=True)
