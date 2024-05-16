@@ -23,13 +23,13 @@ def cadastro():
 
 @app.route("/cadastro_remedio")
 def cadastrar_medicamentos():
-    if 'nome_usuario' not in session:
+    if not session.get('nome'):
         return redirect(url_for('cadastro'))
     return render_template("cadastro_remedio.html")
 
 @app.route("/consulta")
 def consulta_de_medicamentos():
-    if 'nome_usuario' not in session:
+    if not session.get('nome'):
         return redirect(url_for('cadastro'))
     return render_template("consulta_medicamento.html")
 
