@@ -1,11 +1,9 @@
 from flask import Flask
 from flask import render_template, send_from_directory, request, redirect, url_for, jsonify, session
-from flask_cors import CORS
 import sqlite3
 import json
 
 app = Flask(__name__)
-CORS(app)
 
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
