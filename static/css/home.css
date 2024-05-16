@@ -41,15 +41,17 @@ header,h1{
     color: #f40410;  
 }
 
-.divisao-titulo{
+.divisao-titulo {
     margin: 0px;
     height: 2vi;
-    width: 60vh;
+    width: 100%;
     left: 2vh;
-    top: 170px;
-    position: absolute;
-    /* display: flex; */
-    /* justify-content: space-between; */
+    position: relative;
+}
+
+.container__imagem {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .titulo-home{
@@ -82,7 +84,7 @@ header,h1{
 footer {
     background-color: #333;
     padding: 10px 0;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -94,7 +96,7 @@ footer {
     align-items: center;
     text-align: left;
     position: relative;
-    left: 10vw;
+    left: auto;
     
    
 }
