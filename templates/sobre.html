@@ -9,15 +9,20 @@
 </head>
 
 <body>
-    <header  class="cabecalho">
+    <header class="cabecalho">
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="sobre">Sobre</a>
-            <a class="cabecalho__menu__link" href="cadastro_remedio">Cadastro de Remédios</a>
-            <a class="cabecalho__menu__link" href="consulta">Consulta de Remédios</a>
-            <a class="cabecalho__menu__link" href="cadastro">Cadastro de Usuário</a>
-            <a class="cabecalho__menu__link" href="login">Login</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="menu-links">
+                <a class="cabecalho__menu__link" href="sobre">Sobre</a>
+                <a class="cabecalho__menu__link" href="cadastro_remedio">Cadastro de Remédios</a>
+                <a class="cabecalho__menu__link" href="consulta">Consulta de Remédios</a>
+                <a class="cabecalho__menu__link" href="cadastro">Cadastro de Usuário</a>
+                <a class="cabecalho__menu__link" href="login">Login</a>
+            </div>
         </nav>
-     </header>
+    </header>
      <div class="conteudo">
         <div class="grade">
             <div>
@@ -34,6 +39,15 @@
            
         </div>
      </div>
-    
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuLinks = document.querySelector('.menu-links');
+
+            menuToggle.addEventListener('click', function() {
+                menuLinks.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
