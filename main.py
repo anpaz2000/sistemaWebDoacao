@@ -1,11 +1,14 @@
+import os
 from flask import Flask
 from flask import render_template, send_from_directory, request, redirect, url_for, jsonify, session
 from flask_cors import CORS
-import sqlite3
 import json
+from sqlalchemy import create_engine, text
 
 app = Flask(__name__)
 CORS(app)
+
+engine = create_engine(os.getenv("POSTGRES_URL").replace("postgres://", "postgresql://"), echo=True)
 
 # Adiciona o icone nas páginas
 @app.route('/favicon.ico')
@@ -46,17 +49,23 @@ def busca_remedio_base():
     json_request = request.json
     print(json_request, json_request["nome_remedio"])
     nome_remedio = json_request["nome_remedio"]
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()    
-    # Consultar os dados
-    cursor.execute(f"""
-        SELECT remedio.*, usuario.nome as nome_usuario, usuario.telefone, usuario.email 
-        FROM remedio 
-        JOIN usuario ON remedio.id_usuario = usuario.id
-        WHERE upper(remedio.nome) like '%{nome_remedio}%'
-    """)
-    dados = cursor.fetchall()
-    return jsonify(dados)
+    with engine.connect() as conn:
+        # Consultar os dados
+        resultados = conn.execute(text(f"""
+            SELECT remedio.*, usuario.nome as nome_usuario, usuario.telefone, usuario.email 
+            FROM remedio 
+            JOIN usuario ON remedio.id_usuario = usuario.id
+            WHERE remedio.nome ilike '%' || :nome_remedio || '%'
+        """), {"nome_remedio": nome_remedio})
+        dados = [list(r) for r in resultados]
+        print("@@@@@")
+        print(dados)
+        # [
+        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador],
+        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador],
+        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador]
+        # ]
+        return jsonify(dados)
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -65,17 +74,14 @@ def submit():
     telefone = request.form['telefone']
     senha = request.form['senha']
 
-    # conecta com SQLite.
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
+    # conecta com Postgres.
+    with engine.connect() as conn:
 
-    # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO usuario (nome, email, telefone, senha)
-                      VALUES (?, ?, ?, ?)''', (nome, email, telefone, senha))
-
-# Commit e fechar conexão
-    conn.commit()
-    conn.close()
+        # Inserir dados na tabela Postgres.
+        conn.execute(text('''INSERT INTO usuario (nome, email, telefone, senha)
+                        VALUES (:nome, :email, :telefone, :senha)'''),
+                        [{"nome": nome, "email": email, "telefone": telefone, "senha": senha}])
+        conn.commit()
 
    # redireciona para página sucesso.html
     return redirect(url_for('login'))
@@ -90,19 +96,18 @@ def submit_remedio():
     validade = request.form['Validade']
     id_usuario = session['id_usuario']
 
-    # conecta com SQLite.
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
+    # conecta com Postgres.
+    with engine.connect() as conn:
   
-    # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade, id_usuario)
-                      VALUES (?, ?, ?, ?, ?)''', (nome, quantidade, dosagem, validade, id_usuario))
+        # Inserir dados na tabela Postgres.
+        conn.execute(text('''INSERT INTO remedio (nome, quantidade, dosagem, validade, id_usuario)
+                        VALUES (:nome, :quantidade, :dosagem, :validade, :id_usuario)'''), 
+                        {"nome": nome, "quantidade": quantidade, "dosagem": dosagem, "validade": validade, "id_usuario": id_usuario})
 
-    # Commit e fechar conexão
-    conn.commit()
-    conn.close()
+        # Commit e fechar conexão
+        conn.commit()
 
-   # redireciona para página sucesso.html
+    # redireciona para página sucesso.html
     return redirect(url_for('consulta_de_medicamentos'))
 
 @app.route("/submit_login", methods=['POST'])
@@ -110,25 +115,19 @@ def submit_login():
     email = request.form['email']
     senha = request.form['senha']
 
-    # Conecta com SQLite
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
+    # Conecta com Postgres
+    with engine.connect() as conn:
+        resultados = conn.execute(text("SELECT * FROM usuario WHERE email = :email AND senha = :senha"), {"email": email, "senha": senha})
+        dados = [r for r in resultados]
 
-    # Consulta os dados
-    cursor.execute("SELECT * FROM usuario WHERE email = ? AND senha = ?", (email, senha))
-    dados = cursor.fetchall()
-
-    # Fecha conexão com o banco de dados
-    conn.close()
-
-    if len(dados) > 0:
-        session['nome'] = dados[0][1]
-        session['email'] = email
-        session['id_usuario'] = dados[0][0]
-        session['secret_key'] = 'chave_acesso'
-        return redirect(url_for('consulta_de_medicamentos'))
-    else:
-        return redirect(url_for('cadastro'))
+        if len(dados) > 0:
+            session['nome'] = dados[0][1]
+            session['email'] = email
+            session['id_usuario'] = dados[0][0]
+            session['secret_key'] = 'chave_acesso'
+            return redirect(url_for('consulta_de_medicamentos'))
+        else:
+            return redirect(url_for('cadastro'))
         
 if __name__=="__main__":
     app.secret_key = 'chave_acesso'

@@ -25,9 +25,6 @@ async function buscaRemedio(){
       tabelaCorpo.innerHTML = "";
       objetoResposta.forEach((remedio)=>{
 
-        console.log("@@@@")
-        console.log(remedio)
-
         const tr = document.createElement("tr");
         const tdNome = document.createElement("td");
         tdNome.textContent = remedio[1];

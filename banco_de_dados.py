@@ -9,14 +9,14 @@ cursor = conexao.cursor()
 # criar a tabela de usuario
 comando_sql = """
 CREATE TABLE IF NOT EXISTS remedio (
-	id	INTEGER PRIMARY KEY,
+	id	SERIAL PRIMARY KEY NOT NULL,
     nome	TEXT,
 	quantidade	INTEGER,
 	dosagem	TEXT,
 	validade	DATE,
 	id_usuario  INTEGER,
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id)
-)
+);
 """
 # Executar o comando SQL
 cursor.execute(comando_sql)
@@ -29,7 +29,7 @@ cursor = conexao.cursor()
 # criar a tabela de usuario
 comando_sql = """
 CREATE TABLE IF NOT EXISTS usuario (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY NOT NULL,
     nome TEXT,
     email TEXT,
     telefone TEXT,
