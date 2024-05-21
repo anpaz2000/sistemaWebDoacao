@@ -102,6 +102,21 @@ footer {
 }
 
 
+@media (max-width:768px) {
+    .container__imagem {
+        display: flex;
+        justify-content: flex-end;
+        margin: 200px 0 0;
+    }
+    .titulo-home {
+        font-size: 7vi;
+    }
+    .subtitulo {
+        font-size: 4vi;
+    }
+}
+
+
 
 /*#loginHome{
     height: 60vh;

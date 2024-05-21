@@ -11,38 +11,49 @@
     
 </head>
 
-<head>
 <body>
 
-    <header  class="cabecalho">
+    <header class="cabecalho">
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="sobre">Sobre</a>
-            <a class="cabecalho__menu__link" href="cadastro_remedio">Cadastro de Remédios</a>
-            <a class="cabecalho__menu__link" href="consulta">Consulta de Remédios</a>
-            <a class="cabecalho__menu__link" href="cadastro">Cadastro de Usuário</a>
-            <a class="cabecalho__menu__link" href="login">Login</a>
-           
-
+            <button class="menu-toggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="menu-links">
+                <a class="cabecalho__menu__link" href="sobre">Sobre</a>
+                <a class="cabecalho__menu__link" href="cadastro_remedio">Cadastro de Remédios</a>
+                <a class="cabecalho__menu__link" href="consulta">Consulta de Remédios</a>
+                <a class="cabecalho__menu__link" href="cadastro">Cadastro de Usuário</a>
+                <a class="cabecalho__menu__link" href="login">Login</a>
+            </div>
         </nav>
-     </header>
-
-    <div class="divisao-titulo">
-        <p class="titulo-home">Logística Solidária de Remédios </p>
-        <p class="subtitulo">
-            Facilitar a conexão entre indivíduos <br> que possuem medicamentos excedentes.
-        </p>
-    </div>
-    
-    <div class="container__imagem">
-        <img class="vetorPessoas" src="/static/img/pessoasSolidarias.png" alt="pessoas" style="z-index:-5">
-         
-    </div>
+    </header>
+     <main>
+        <div class="divisao-titulo">
+            <p class="titulo-home">Logística Solidária de Remédios </p>
+            <p class="subtitulo">
+                Facilitar a conexão entre indivíduos <br> que possuem medicamentos excedentes.
+            </p>
+        </div>
+        
+        <div class="container__imagem">
+            <img class="vetorPessoas" src="/static/img/pessoasSolidarias.png" alt="pessoas" style="z-index:-5">
+            
+        </div>
     </main>
     <footer>
         <p class="rodape__texto">Desenvolvido por DRP14-Projeto Integrador 110-SALA-004 GRUPO-005 / Univesp
         </p>
     </footer>
-</head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuLinks = document.querySelector('.menu-links');
+
+            menuToggle.addEventListener('click', function() {
+                menuLinks.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
