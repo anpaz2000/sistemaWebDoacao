@@ -58,13 +58,7 @@ def busca_remedio_base():
             WHERE remedio.nome ilike '%' || :nome_remedio || '%'
         """), {"nome_remedio": nome_remedio})
         dados = [list(r) for r in resultados]
-        print("@@@@@")
-        print(dados)
-        # [
-        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador],
-        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador],
-        #  [id, nome, quantidade, dosagem, validade, nome_doador, contato_doador]
-        # ]
+
         return jsonify(dados)
 
 @app.route('/submit', methods=['POST'])
