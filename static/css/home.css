@@ -6,15 +6,7 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-    
-/* 
-* .cabecalho{ 
-    padding: 2% 5% 5% 15%;
-    position: relative;
-    z-index: 2;
-    
-    
-} */
+
 
 body{
     background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
@@ -32,9 +24,7 @@ header,h1{
     width:100%;
     margin: 0;
     color: wheat;
-    /*text-align:center;*/
     padding: 15vh 0;
-
     font-size: 50%;
     line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -55,24 +45,21 @@ header,h1{
 }
 
 .titulo-home{
-    /* position: absolute; */
-    /* left: 10px; */
+   
     color:#f40410;
-    font-size: 4vi;
-    /* text-align: left; */
+    font-size: 3.5vi;
+   
 }
 
 .subtitulo{
-    /* position: absolute; */
+   
     font-size: 2vi;
-    /* text-align: right; */
-    /* left: 10px; */
+   
+    
 }
 
 .vetorPessoas{
    
-  /* position: fixed; */
-  
    height: 70vh;
    right: 7vw;
 
@@ -117,32 +104,4 @@ footer {
 }
 
 
-
-/*#loginHome{
-    height: 60vh;
-    width: 23vw;
-    float: right;
-    position: fixed;
-    top: 13vh;
-    right: 15vh;
-    position: absolute;
-    z-index: 4;
-    
-}
-
-.form-container {
-    position: static;
-    z-index: 5;
-    max-width: 20vw;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.438);
-    border-radius: 10px;
-    
-}
-
-
-.Entrar{
-    color: #0000008d;
-    text-shadow: #000000;
-}*/
 
